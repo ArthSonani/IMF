@@ -12,4 +12,4 @@ IMF Inventory Management is a Node.js API for managing spy gadgets, including au
 ## Setup  
 1. Clone the repo & install dependencies:  
    ```bash
-   git clone <repo_url> && cd IMF && npm install
+   git clone https://github.com/ArthSonani/IMF.git && cd IMF && npm install
