@@ -10,5 +10,5 @@ app.use("/auth", authRoutes);
 app.use("/gadgets", gadgetRoutes);
 
 app.listen(3000, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port 3000`);
 });
