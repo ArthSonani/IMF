@@ -8,6 +8,7 @@ const prisma = new PrismaClient();
 const router = express.Router();
 
 // User Registration
+
 router.post(
   "/register",
   [

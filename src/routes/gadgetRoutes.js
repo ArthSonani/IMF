@@ -11,4 +11,3 @@ router.delete("/:id", authenticate, authorize(["admin"]), decommissionGadget);
 router.post("/:id/self-destruct", authenticate, selfDestructGadget);
 
 export default router;
-

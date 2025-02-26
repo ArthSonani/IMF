@@ -6,6 +6,7 @@ const successProbability = () => {
   return Math.floor(Math.random() * 51) + 50;
 };
  
+
 const getAllGadgets = async (req, res) => {
   try {
 
@@ -97,23 +98,25 @@ const selfDestructGadget = async (req, res) => {
     }
 
     const confirmationCode = Math.random().toString(36).substring(2, 8).toUpperCase();
-
-    console.log("Gadget ID:", id);
+    
+    // Update the gadget status
     const updatedGadget = await prisma.gadget.update({
       where: { id },
       data: {
-        status: "Destroyed",
+        status: "DESTROYED",
       },
     });
 
     res.json({
-      // message: `Self-destruct sequence initiated for ${updatedGadget.name}.`,
+      message: `Self-destruct sequence initiated for ${updatedGadget?.name || "Gadget"}.`,
       confirmation_code: confirmationCode,
-      // gadget: updatedGadget,
+      gadget: updatedGadget,
     });
   } catch (error) {
-    res.status(500).json({ error: "Error triggering self-destruct sequence" });
+    console.error("Self-destruct error:", error);
+    res.status(500).json({ error: "Error triggering self-destruct sequence", details: error.message });
   }
 };
+
 
 export { getAllGadgets, addGadget, updateGadget, decommissionGadget, selfDestructGadget };
